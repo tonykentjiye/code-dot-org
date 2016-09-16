@@ -1,4 +1,11 @@
 %h1= @page_title = "Editing script #{@script.name}"
+
+:javascript
+  const scriptData = #{@script.summarize.to_json};
+
+.edit_container
+= javascript_include_tag 'js/levelbuilder_edit_script'
+
 %h4 <span style="color: red; font-weight: bold; text-decoration: underline">Warning! Don't rename stages!</span>
 %p
   There are currently unsolved issues with renaming stages
