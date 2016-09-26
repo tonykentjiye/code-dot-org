@@ -1,7 +1,9 @@
 %h1= @page_title = "Editing script #{@script.name}"
 
--#:javascript
--#  const scriptData = #{@script.summarize.to_json};
+:javascript
+  const scriptData = #{@script.summarize.to_json};
+  const i18nData = #{@script.summarize_i18n.to_json};
+  const keyList = #{Level.key_list.to_json};
 
 .edit_container
 = javascript_include_tag 'js/levelbuilder_edit_script'

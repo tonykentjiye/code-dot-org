@@ -661,6 +661,7 @@ class Script < ActiveRecord::Base
     summary = {
       id: id,
       name: name,
+      wrapup_video: wrapup_video.try(:key),
       plc: professional_learning_course?,
       hideable_stages: hideable_stages?,
       stages: summarized_stages,
@@ -668,6 +669,12 @@ class Script < ActiveRecord::Base
     }
 
     summary
+  end
+
+  def summarize_i18n
+    %w(title description description_short description_audience).map do |key|
+      [key.camelize(:lower), I18n.t("data.script.name.#{name}.#{key}", default: '')]
+    end.to_h
   end
 
   def self.clear_cache

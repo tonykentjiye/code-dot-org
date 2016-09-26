@@ -192,7 +192,7 @@ class ScriptLevel < ActiveRecord::Base
         url: build_script_level_url(self)
     }
 
-    summary[:name] = level.name if kind == 'named_level'
+    summary[:name] = level.key
 
     # Add a previous pointer if it's not the obvious (level-1)
     if previous_level

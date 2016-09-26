@@ -168,11 +168,6 @@ class Ability
         Script,
         ScriptLevel
       ]
-
-      # Only custom levels are editable.
-      cannot [:update, :destroy], Level do |level|
-        !level.custom?
-      end
     end
 
     if user.admin?
