@@ -180,7 +180,16 @@ class Script < ActiveRecord::Base
   def self.script_cache_from_db
     {}.tap do |cache|
       Script.all.pluck(:id).each do |script_id|
-        script = Script.includes([{script_levels: [{levels: [:game, :concepts] }, :stage, :callouts]}, :stages]).find(script_id)
+        script = Script.includes([
+          {
+            script_levels: [
+              {levels: [:game, :concepts, :level_concept_difficulty]},
+              :stage,
+              :callouts
+            ]
+          },
+          :stages
+        ]).find(script_id)
 
         cache[script.name] = script
         cache[script.id.to_s] = script
@@ -360,7 +369,7 @@ class Script < ActiveRecord::Base
   end
 
   def has_lesson_plan?
-    k5_course? || %w(msm algebra algebraa cspunit1 cspunit2 cspunit3 cspunit4 cspunit5 cspunit6 csp1 csp2 csp3 csp4 csp5 csp6 cspoptional csd3 text-compression netsim pixelation frequency_analysis vigenere).include?(self.name)
+    k5_course? || %w(msm algebra algebraa algebrab cspunit1 cspunit2 cspunit3 cspunit4 cspunit5 cspunit6 csp1 csp2 csp3 csp4 csp5 csp6 cspoptional csd1 csd3 text-compression netsim pixelation frequency_analysis vigenere).include?(self.name)
   end
 
   def has_banner?

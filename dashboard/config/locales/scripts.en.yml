@@ -1358,6 +1358,7 @@ en:
           stage:
             Alice and Bob and Asymmetric Keys: Alice and Bob and Asymmetric Keys
             Cracking the Code: Cracking the Code
+            Encryption with Keys and Passwords: Encryption with Keys and Passwords
             Identifying People with Data: Identifying People with Data
             Practice PT - Cybersecurity Innovations: Practice PT - Cybersecurity Innovations
             Practice PT - Propose an Innovation: Practice PT - Propose an Innovation
@@ -1366,6 +1367,8 @@ en:
             Simple Encryption: Simple Encryption
             The Cost of Free: The Cost of Free
             What is Big Data?: What is Big Data?
+            Rapid Research - Cybercrime: Rapid Research - Cybercrime
+            Practice PT - Big Data and Security Dilemmas: Practice PT - Big Data and Security Dilemmas
         csp5:
           title: CSP Unit 5 - Building Apps
           description: 'PLEASE NOTE: this unit is still undergoing revisions based on pilot feedback from the 15-16 school year.  What''s below is the planned sequence of lessons.  The revision work should be done by late fall or early winter 2016.  As a result: (1) lesson plans will still be in google docs (2) unit/lesson numbers on those docs may not match what you see below. DESCRIPTION: This unit continues the introduction of foundational concepts of computer programming, which unlocks the ability to make rich, interactive apps. This course uses JavaScript as the programming language, and App Lab as the programming environment to build apps, but the concepts learned in these lessons span all programming languages and tools.'
@@ -1590,6 +1593,20 @@ en:
             Quality Websites: Quality Websites
             Text on the Web: Text on the Web
             Website Design: Website Design
+            Intellectual Property: Intellectual Property
+            Introduction to Styling with CSS: Introduction to Styling with CSS
+            'Personal Website: Connecting Pages': 'Personal Website: Connecting Pages'
+            Classes and External Style Sheets: Classes and External Style Sheets
+            Box Model and Page Layout: Box Model and Page Layout
+            'Personal Website: Midway Check': 'Personal Website: Midway Check'
+            Publishing a Website: Publishing a Website
+            Sources and Search Engines: Sources and Search Engines
+            Introduction to HTML: Introduction to HTML
+            Headers and Lists: Headers and Lists
+            Designing Web Pages: Designing Web Pages
+            Holding: Holding
+            Describing Web pages: Describing Web pages
+            Multi-Page Websites: Multi-Page Websites
         CSDU5-Draft:
           title: " TEMP CSD Unit 5"
           description: Temp place to work on U5 of Disco
@@ -1872,6 +1889,8 @@ en:
             Puppy Event: Puppy Event
             Puppy Introduction: Puppy Introduction
             Puppy Loops: Puppy Loops
+            How to behave in the lab_How to use Code_org puzzles: How to behave in the lab/How to use Code.org puzzles
+            Programming at home with my pet: Programming at home with my pet
         transferring-over:
           stage:
             20-hr Stage 2: 20-hr Stage 2
@@ -1909,3 +1928,64 @@ en:
             Anonymous student pre-survey: Anonymous student pre-survey
             NEW Unit 1 Chapter 1 Assessment: NEW Unit 1 Chapter 1 Assessment
             Unit 1 Chapter 1 Assessment: Unit 1 Chapter 1 Assessment
+        sciencepd3-2016:
+          title: CS in Science PD3 Before 1st In-Person
+          description_short: 'Phase 3: Academic Year Development Pre 1'
+          description: 'Phase 3: Academic Year Development (Segment One)'
+          stage:
+            Welcome Back!: Welcome Back!
+            The TLO: The TLO
+            Prep With Your Modules: Prep With Your Modules
+        csd1:
+          title: 'CSD Unit 1 - Problem Solving: Computers and Logic'
+          description_short: Problem Solving
+          description: U1 of Discoveries
+          stage:
+            Intro to Problem Solving: Intro to Problem Solving
+            The Problem Solving Process: The Problem Solving Process
+            Exploring Problem Solving: Exploring Problem Solving
+            What is a Computer?: What is a Computer?
+            Representing Information: Representing Information
+            Processing with Bits: Processing with Bits
+            Human vs. Computer Processing: Human vs. Computer Processing
+            Processing with Apps: Processing with Apps
+            'Project: Apps and Problem Solving': 'Project: Apps and Problem Solving'
+            Human vs Computer Processing: Human vs Computer Processing
+        csp-online-test:
+          title: test space for csp online support
+          description_short: This is a sample course for testing csp online pd
+          description: This is a test space for online pd. Enrollment in this course does nothing.
+          stage:
+            Unit 1 Overview: Unit 1 Overview
+            'Lessons 2-3: Binary Messages': 'Lessons 2-3: Binary Messages'
+            Group Work and Peer Learning: Group Work and Peer Learning
+            Balancing Teachers and Tools: Balancing Teachers and Tools
+            Discovery Learning: Discovery Learning
+            Measuring Student Learning: Measuring Student Learning
+            'Lessons 4-6: Encoding and Sending Numbers': 'Lessons 4-6: Encoding and Sending Numbers'
+            'Lesson 7: Encoding and Sending Text': 'Lesson 7: Encoding and Sending Text'
+            'lessons 9: Internet Addressing': 'lessons 9: Internet Addressing'
+            'lessons 10: Routers and Redundancy': 'lessons 10: Routers and Redundancy'
+            'lessons 11-12: Protocols and Abstraction': 'lessons 11-12: Protocols and Abstraction'
+            'Lessons 2 - 3: Binary Messages': 'Lessons 2 - 3: Binary Messages'
+            'Lessons 4 - 6: Encoding and Sending Numbers': 'Lessons 4 - 6: Encoding and Sending Numbers'
+            'Lesson 9: Internet Addressing': 'Lesson 9: Internet Addressing'
+            'Lessons 10 - 11: Redundancy and Packets': 'Lessons 10 - 11: Redundancy and Packets'
+            'Lessons 12 - 13: Abstraction on the Internet': 'Lessons 12 - 13: Abstraction on the Internet'
+            'Lessons 10 - 11: Routers, Redundancy, and Packets': 'Lessons 10 - 11: Routers, Redundancy, and Packets'
+        csp1-support:
+          title: CSP Unit 1 Online Support
+          description_short: TeacherSupports for CSP unit 1
+          description: This is a set of online supports of CSP teachers preparing to teach Unit 1.
+          stage:
+            Unit 1 Overview: Unit 1 Overview
+            'Lessons 2 - 3: Binary Messages': 'Lessons 2 - 3: Binary Messages'
+            'Lessons 4 - 6: Encoding and Sending Numbers': 'Lessons 4 - 6: Encoding and Sending Numbers'
+            'Lesson 7: Encoding and Sending Text': 'Lesson 7: Encoding and Sending Text'
+            'Lesson 9: Internet Addressing': 'Lesson 9: Internet Addressing'
+            'Lessons 10 - 11: Routers, Redundancy, and Packets': 'Lessons 10 - 11: Routers, Redundancy, and Packets'
+            'Lessons 12 - 13: Abstraction on the Internet': 'Lessons 12 - 13: Abstraction on the Internet'
+            Group Work and Peer Learning: Group Work and Peer Learning
+            Balancing Teachers and Tools: Balancing Teachers and Tools
+            Discovery Learning: Discovery Learning
+            Measuring Student Learning: Measuring Student Learning

@@ -66,8 +66,8 @@ module LevelsHelper
   end
 
   def use_firebase
-    !!@level.game.use_firebase_for_new_project? ||
-        !!(request.parameters && request.parameters['useFirebase'])
+    !!@level.game.use_firebase_for_new_project? &&
+        !(request.parameters && request.parameters['noUseFirebase'])
   end
 
   def select_and_track_autoplay_video
@@ -632,5 +632,11 @@ module LevelsHelper
     if current_user && @level.try(:ideal_level_source_id) && @script_level && !@script.hide_solutions?
       Ability.new(current_user).can? :view_level_solutions, @script
     end
+  end
+
+  # Should the multi calling on this helper function include answers to be rendered into the client?
+  # Caller indicates whether the level is standalone or not.
+  def include_multi_answers?(standalone)
+    standalone || current_user.try(:should_see_inline_answer?, @script_level)
   end
 end

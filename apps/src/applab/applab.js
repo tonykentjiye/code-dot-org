@@ -26,6 +26,7 @@ var dropletConfig = require('./dropletConfig');
 var makerDropletConfig = require('../makerlab/dropletConfig');
 var AppStorage = require('./appStorage');
 var FirebaseStorage = require('./firebaseStorage');
+import { getColumnsRef, onColumnNames, addMissingColumns } from './firebaseMetadata';
 import { getDatabase } from './firebaseUtils';
 var constants = require('../constants');
 var experiments = require('../experiments');
@@ -60,7 +61,7 @@ var consoleApi = require('../consoleApi');
 
 var BoardController = require('../makerlab/BoardController');
 import { shouldOverlaysBeVisible } from '../templates/VisualizationOverlay';
-import { addTableName, deleteTableName, updateTableRecords, updateKeyValueData } from './redux/data';
+import { addTableName, deleteTableName, updateTableColumns, updateTableRecords, updateKeyValueData } from './redux/data';
 
 var ResultType = studioApp.ResultType;
 var TestResults = studioApp.TestResults;
@@ -567,8 +568,6 @@ Applab.init = function (config) {
   Applab.channelId = config.channel;
   Applab.firebaseName = config.firebaseName;
   Applab.firebaseAuthToken = config.firebaseAuthToken;
-  // Persist the useFirebaseForNewProject experiment from the url path to local storage
-  experiments.isEnabled('useFirebaseForNewProject');
   var useFirebase = window.dashboard.project.useFirebase() || false;
   Applab.storage = useFirebase ? FirebaseStorage : AppStorage;
   // inlcude channel id in any new relic actions we generate
@@ -1240,6 +1239,7 @@ function onDataViewChange(view, oldTableName, newTableName) {
   // only unlistening from 'value' events here.
   storageRef.child('keys').off('value');
   storageRef.child(`tables/${oldTableName}/records`).off('value');
+  getColumnsRef(oldTableName).off();
 
   switch (view) {
     case DataView.PROPERTIES:
@@ -1248,6 +1248,15 @@ function onDataViewChange(view, oldTableName, newTableName) {
       });
       return;
     case DataView.TABLE:
+      // Add any columns which appear in records in Firebase to the list of columns in
+      // Firebase. Do NOT do this every time the records change, to avoid adding back
+      // a column shortly after it was explicitly renamed or deleted.
+      addMissingColumns(newTableName);
+
+      onColumnNames(newTableName, columnNames => {
+        studioApp.reduxStore.dispatch(updateTableColumns(newTableName, columnNames));
+      });
+
       storageRef.child(`tables/${newTableName}/records`).on('value', snapshot => {
         studioApp.reduxStore.dispatch(updateTableRecords(newTableName, snapshot.val()));
       });
