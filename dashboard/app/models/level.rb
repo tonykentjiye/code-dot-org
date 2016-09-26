@@ -91,6 +91,7 @@ class Level < ActiveRecord::Base
 
   def self.key_list
     @@all_level_keys ||= Level.all.map{ |l| [l.id, l.key] }.to_h
+    @@all_level_keys.map{ |k, v| {label: v, value: k} }
   end
 
   def update_key_list
@@ -288,7 +289,7 @@ class Level < ActiveRecord::Base
   end
 
   def key
-    if level_num == 'custom'
+    if level_num == 'custom' || level_num.nil?
       name
     else
       ["blockly", game.name, level_num].join(':')
