@@ -23,6 +23,7 @@ var errorHandler = require('../errorHandler');
 var outputError = errorHandler.outputError;
 var ErrorLevel = errorHandler.ErrorLevel;
 var dom = require('../dom');
+import FirebaseStorage from '../storage/firebaseStorage';
 
 import {
   setInitialAnimationList,
@@ -167,6 +168,7 @@ GameLab.prototype.init = function (config) {
   gameLabSprite.injectLevel(this.level);
 
   this.studioApp_.labUserId = config.labUserId;
+  this.studioApp_.storage = FirebaseStorage;
 
   this.gameLabP5.init({
     gameLab: this,
