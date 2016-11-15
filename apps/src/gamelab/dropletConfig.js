@@ -332,6 +332,8 @@ draw() - USEFUL?
 
   // Data
   {func: 'getUserId', parent: api, category: 'Game Lab', noAutocomplete: true},
+  {func: 'getKeyValue', parent: api, category: 'Game Lab', noAutocomplete: true},
+  {func: 'setKeyValue', parent: api, category: 'Game Lab', noAutocomplete: true},
 
   // Advanced
 ];
