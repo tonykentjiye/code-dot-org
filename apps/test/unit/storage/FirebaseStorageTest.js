@@ -2,9 +2,9 @@ import { expect } from '../../util/configuredChai';
 import createFirebaseStorage from '@cdo/apps/storage/firebaseStorage';
 import { getDatabase, getConfigRef } from '@cdo/apps/storage/firebaseUtils';
 
-let FirebaseStorage;
-
 describe('FirebaseStorage', () => {
+  let FirebaseStorage;
+
   beforeEach(() => {
     FirebaseStorage = createFirebaseStorage({
       channelId: "test-firebase-channel-id",

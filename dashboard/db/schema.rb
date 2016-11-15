@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109165252) do
+ActiveRecord::Schema.define(version: 20161112200033) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
@@ -669,17 +669,17 @@ ActiveRecord::Schema.define(version: 20161109165252) do
   end
 
   create_table "teacher_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "course",                    null: false
+    t.integer  "studio_person_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "course",                         null: false
     t.boolean  "facilitator"
     t.boolean  "teaching"
     t.string   "pd_year"
     t.string   "pd"
     t.string   "other_pd"
-    t.text     "properties",  limit: 65535
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_teacher_profiles_on_user_id", using: :btree
+    t.text     "properties",       limit: 65535
+    t.index ["studio_person_id"], name: "index_teacher_profiles_on_studio_person_id", using: :btree
   end
 
   create_table "unexpected_teachers_workshops", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -793,20 +793,6 @@ ActiveRecord::Schema.define(version: 20161109165252) do
     t.integer  "conditionals_d5_count",          default: 0
     t.datetime "basic_proficiency_at"
     t.index ["user_id"], name: "index_user_proficiencies_on_user_id", using: :btree
-  end
-
-  create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "user_id",                      null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "updated_by"
-    t.string   "other_user_ids"
-    t.string   "other_emails"
-    t.string   "course"
-    t.string   "pd"
-    t.string   "pd_manual"
-    t.text     "properties",     limit: 65535
-    t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 
   create_table "user_scripts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
