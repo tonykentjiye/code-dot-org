@@ -79,7 +79,7 @@ namespace :circle do
           " --dashboard localhost.studio.code.org:3000" \
           " --circle" \
           " --#{use_saucelabs ? "config #{ui_test_browsers.join(',')}" : 'local'}" \
-          " --parallel 32" \
+          " --parallel 64" \
           " --abort_when_failures_exceed 10" \
           " --retry_count 2" \
           " --html"
