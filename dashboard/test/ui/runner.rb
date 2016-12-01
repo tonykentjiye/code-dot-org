@@ -239,19 +239,8 @@ def run_tests(env, arguments, log_prefix)
   end
 end
 
-if $options.force_db_access
-  $options.pegasus_db_access = true
-  $options.dashboard_db_access = true
-elsif ENV['CI']
-  $options.pegasus_db_access = true
-  $options.dashboard_db_access = true
-elsif rack_env?(:development)
-  $options.pegasus_db_access = true if $options.pegasus_domain =~ /(localhost|ngrok)/
-  $options.dashboard_db_access = true if $options.dashboard_domain =~ /(localhost|ngrok)/
-elsif rack_env?(:test)
-  $options.pegasus_db_access = true if $options.pegasus_domain =~ /test/
-  $options.dashboard_db_access = true if $options.dashboard_domain =~ /test/
-end
+$options.pegasus_db_access = false
+$options.dashboard_db_access = false
 
 all_features = Dir.glob('features/**/*.feature')
 features_to_run = passed_features.empty? ? all_features : passed_features
