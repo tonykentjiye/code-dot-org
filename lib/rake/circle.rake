@@ -75,11 +75,9 @@ namespace :circle do
       container_eyes_features = container_features & eyes_features
       RakeUtils.system_stream_output "bundle exec ./runner.rb" \
           " --feature #{container_features.join(',')}" \
-          " --pegasus localhost.code.org:3000" \
-          " --dashboard localhost.studio.code.org:3000" \
           " --circle" \
           " --#{use_saucelabs ? "config #{ui_test_browsers.join(',')}" : 'local'}" \
-          " --parallel #{use_saucelabs ? 16 : 8}" \
+          " --parallel 64" \
           " --abort_when_failures_exceed 10" \
           " --retry_count 2" \
           " --html"
@@ -88,8 +86,6 @@ namespace :circle do
             " --eyes" \
             " --feature #{container_eyes_features.join(',')}" \
             " --config ChromeLatestWin7,iPhone" \
-            " --pegasus localhost.code.org:3000" \
-            " --dashboard localhost.studio.code.org:3000" \
             " --circle" \
             " --parallel 10" \
             " --retry_count 1" \
@@ -132,7 +128,7 @@ def start_sauce_connect
   RakeUtils.system_stream_output 'tar -xzf sc-4.4.2-linux.tar.gz'
   Dir.chdir(Dir.glob('sc-*-linux')[0]) do
     # Run sauce connect a second time on failure, known periodic "Error bringing up tunnel VM." disconnection-after-connect issue, e.g. https://circleci.com/gh/code-dot-org/code-dot-org/20930
-    RakeUtils.exec_in_background "for i in 1 2; do ./bin/sc -vv -l $CIRCLE_ARTIFACTS/sc.log -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -i #{CDO.circle_run_identifier} --tunnel-domains localhost-studio.code.org,localhost.code.org && break; done"
+    RakeUtils.exec_in_background "for i in 1 2; do ./bin/sc -vv -l $CIRCLE_ARTIFACTS/sc.log -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -i #{CDO.circle_run_identifier} --tunnel-domains test-studio.code.org,test.code.org && break; done"
   end
 end
 
