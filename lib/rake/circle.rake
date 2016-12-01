@@ -67,6 +67,7 @@ namespace :circle do
     if use_saucelabs || test_eyes?
       start_sauce_connect
       RakeUtils.system_stream_output 'until $(curl --output /dev/null --silent --head --fail http://localhost:4445); do sleep 5; done'
+      RakeUtils.exec_in_background 'sleep 180; killall -SIGSTOP sc' # pause the tunnel after 3 minutes
     end
     RakeUtils.system_stream_output 'until $(curl --output /dev/null --silent --head --fail http://localhost.studio.code.org:3000); do sleep 5; done'
     Dir.chdir('dashboard/test/ui') do
