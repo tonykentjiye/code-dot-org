@@ -77,7 +77,6 @@ namespace :circle do
           " --feature #{container_features.join(',')}" \
           " --pegasus localhost.code.org:3000" \
           " --dashboard localhost.studio.code.org:3000" \
-          " --circle" \
           " --#{use_saucelabs ? "config #{ui_test_browsers.join(',')}" : 'local'}" \
           " --parallel #{use_saucelabs ? 16 : 8}" \
           " --abort_when_failures_exceed 10" \
