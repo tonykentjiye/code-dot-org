@@ -47,14 +47,17 @@ def saucelabs_browser
     begin
       http_client = Selenium::WebDriver::Remote::Http::Persistent.new.tap do |c|
         c.timeout = 5 * 60 # iOS takes more time
-        # decrease idle_timeout to help avoid "too many connection resets" error
-        c.send(:http).idle_timeout = 3
       end
       browser = Selenium::WebDriver.for(:remote,
         url: url,
         desired_capabilities: capabilities,
         http_client: http_client
       )
+
+      # decrease idle_timeout to help avoid "too many connection resets" error
+      # Depends on happening after given a URL through creating the webdriver.
+      # Hack: We're accessing a private method here, as an experiment
+      http_client.send(:http).idle_timeout = 3
     rescue StandardError
       raise if retries >= MAX_CONNECT_RETRIES
       puts 'Failed to get browser, retrying...'
