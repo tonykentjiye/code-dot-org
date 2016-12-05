@@ -48,7 +48,7 @@ def saucelabs_browser
       http_client = Selenium::WebDriver::Remote::Http::Persistent.new.tap do |c|
         c.timeout = 5 * 60 # iOS takes more time
         # decrease idle_timeout to help avoid "too many connection resets" error
-        c.http.idle_timeout = 3
+        c.send(:http).idle_timeout = 3
       end
       browser = Selenium::WebDriver.for(:remote,
         url: url,
